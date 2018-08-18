@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Lecturers
+{% endblock %}
+
+
+
+{% block content %}
+    <h5>List of lecturers in Physics Department</h5>
+    <table class="table table-striped">
+        <thead class="thead-default">
+            <tr>
+                <th>Name</th>
+                <th colspan="2"></th>
+                <th>Qualification</th>
+                <th colspan="2"></th>
+                <th>Designation</th>
+                <th colspan="2"></th>
+                <th>Field of Specialization</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for list in lists %}
+                <tr>
+                    <td>
+                        {{ list.name }}
+                    </td>
+                    <td colspan="2"></td>
+                    <td>
+                        {{ list.qualification }}
+                    </td>
+                    <td colspan="2"></td>
+                    <td>
+                        {{ list.designation }}
+                    </td>
+                    <td colspan="2"></td>
+                    <td>
+                        {{ list.field_of_specialization }}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+

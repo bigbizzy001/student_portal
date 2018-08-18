@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    courses-second
+{% endblock %}
+
+
+{% block content %}
+    <h4 align="center">Courses offered for YEAR 1</h4>
+        <div >
+            <h6 align="left"><strong>Second Semester Courses</strong></h6>
+            <table class="table table-striped">
+                <thead class="thead-inverse">
+                    <tr>
+                        <th>Code</th>
+                        <th colspan="3"></th>
+                        <th>Title</th>
+                        <th colspan="3"></th>
+                        <th>Credit Unit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for second in second_semester %}
+                        <tr>
+                            <td>
+                                {{second.course_code}}
+                            </td>
+                            <td colspan="3"></td>
+                            <td>
+                                {{second.course_title}}
+                            </td>
+                            <td colspan="3"></td>
+                            <td align="center">
+                                {{second.credit_unit}}
+                            </td>
+                        </tr>
+                <p>  </p>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <p>total credit unit = <strong>{{ cu }}</strong></p>
+
+            <br>
+            <p><a href="{% url 'portal:courses_first' %}"><em>view first semester courses</em></a></p>
+        </div>
+
+{% endblock %}

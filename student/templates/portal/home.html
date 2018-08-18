@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Portal
+{% endblock %}
+
+{% block content %}
+    <h4 align="center">Students Time Table</h4>
+    <br>
+    <h6>First Semester</h6>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Days\TIme</th>
+                <th>8 - 9am</th>
+                <th>9 - 10am</th>
+                <th>10 - 11am</th>
+                <th>11 - 12pm</th>
+                <th>12 - 1pm</th>
+                <th>1 - 2pm</th>
+                <th>2 - 3pm</th>
+                <th>3 - 4pm</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for first in first_time_table %}
+                <tr>
+                    <td>
+                        <strong>{{ first.day }}</strong>
+                    </td>
+                    <td>
+                        {{ first.first_course }}
+                    </td>
+                    <td>
+                        {{ first.second_course }}
+                    </td>
+                    <td>
+                        {{ first.third_course }}
+                    </td>
+                    <td>
+                        {{ first.fourth_course }}
+                    </td>
+                    <td>
+                        {{ first.fifth_course }}
+                    </td>
+                    <td>
+                        {{ first.sixth_course }}
+                    </td>
+                    <td>
+                        {{ first.seventh_course }}
+                    </td>
+                    <td>
+                        {{ first.eighth_course }}
+                    </td>
+                </tr>
+            {% empty %}
+                <h6>No time table yet.</h6>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p><a href="{% url 'portal:time_table_second' %}"><em>See second semester time table</em></a></p>
+    <br>
+    <br>
+    <p><strong>see course, hall(s) and lecturer</strong></p>
+    <ul>
+        {% for detail in first_arrangements %}
+            <li>{{ detail.course }} Hall-{{ detail.venue }}, <strong>{{ detail.lecturer_one}}
+                ({{ detail.lecturer_one.designation}})</strong></li>
+        {% empty %}
+            <p>None assigned yet.</p>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
